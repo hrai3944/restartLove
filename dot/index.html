@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My GF?</title>
+
+<style>
+:root {
+    --pink: #ff4d6d;
+    --dark-pink: #e63946;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758f, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    border-radius: 24px;
+    padding: 40px 30px;
+    width: 90%;
+    max-width: 380px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    animation: pop 0.8s ease;
+}
+
+@keyframes pop {
+    0% { transform: scale(0.7); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+h1 {
+    color: white;
+    font-size: 1.9rem;
+    margin-bottom: 25px;
+}
+
+.buttons {
+    position: relative;
+    height: 140px;
+    margin-top: 30px;
+}
+
+button {
+    width: 120px;
+    padding: 14px;
+    border: none;
+    border-radius: 40px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+#yes {
+    background: var(--pink);
+    color: white;
+    box-shadow: 0 8px 25px rgba(255,77,109,0.6);
+}
+
+#yes:hover {
+    transform: scale(1.08);
+    background: var(--dark-pink);
+}
+
+#no {
+    background: #dee2e6;
+    color: #333;
+    position: absolute;
+    right: 0;
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    color: rgba(255,255,255,0.6);
+    font-size: 18px;
+    animation: float 6s infinite linear;
+}
+
+@keyframes float {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-120vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Will you be my girlfriend Again Baby we will Again Restart Beautifully? 💖</h1>
+
+    <div class="buttons">
+        <button id="yes">Yes 💕</button>
+        <button id="no">No 💔</button>
+    </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+
+// Desktop hover escape (LONG DISTANCE)
+noBtn.addEventListener("mouseover", () => {
+    if (window.innerWidth > 768) {
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 100);
+        noBtn.style.position = "fixed";
+        noBtn.style.left = `${x}px`;
+        noBtn.style.top = `${y}px`;
+        noBtn.style.transition = "all 0.4s ease";
+    }
+});
+
+// Mobile tap warning
+noBtn.addEventListener("click", () => {
+    if (window.innerWidth <= 768) {
+        alert("❌ Wrong option 😭\nDon’t break the heart of an innocent baby of yours 💔");
+    }
+});
+
+// YES page
+yesBtn.addEventListener("click", () => {
+    document.body.innerHTML = `
+    <div style="
+        height:100vh;
+        background:linear-gradient(135deg,#ff758f,#ff7eb3);
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:20px;
+        color:white;
+        animation: pop 0.8s ease;
+    ">
+        <h1 style="font-size:2.4rem;">Love you baby 💖</h1>
+        <p style="font-size:1.1rem; max-width:500px;">
+            I knew you will choose this innocent bacha 😘<br>
+            I love you too forever & always baby ❤️
+        </p>
+        <img src="IMG_20250324_162453.jpg"
+             style="width:260px; margin-top:25px; border-radius:22px;
+                    box-shadow:0 15px 40px rgba(0,0,0,0.35);">
+    </div>
+    `;
+});
+
+// Floating hearts generator
+for (let i = 0; i < 20; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 4) + "s";
+    heart.style.bottom = "-20px";
+    document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
